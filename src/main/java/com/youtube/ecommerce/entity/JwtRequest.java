@@ -1,4 +1,4 @@
-package com.youtube.jwt.entity;
+package com.youtube.ecommerce.entity;
 
 import lombok.Getter;
 import lombok.Setter;

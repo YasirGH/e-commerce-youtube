@@ -1,6 +1,5 @@
-package com.youtube.jwt.configuration;
+package com.youtube.ecommerce.configuration;
 
-import com.youtube.jwt.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,9 +1,9 @@
-package com.youtube.jwt.service;
+package com.youtube.ecommerce.service;
 
-import com.youtube.jwt.dao.RoleDao;
-import com.youtube.jwt.dao.UserDao;
-import com.youtube.jwt.entity.Role;
-import com.youtube.jwt.entity.User;
+import com.youtube.ecommerce.dao.RoleDao;
+import com.youtube.ecommerce.dao.UserDao;
+import com.youtube.ecommerce.entity.Role;
+import com.youtube.ecommerce.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -52,15 +52,15 @@ public class UserService {
         adminUser.setRole(adminRoles);
         userDao.save(adminUser);
 
-        /*User user = new User();
+        User user = new User();
         user.setUserName("raj123");
+        user.setUserPassword(getEncodedPassword("raj@123"));
         user.setUserFirstName("raj");
         user.setUserLastName("sharma");
-        user.setUserPassword(getEncodedPassword("raj@pass"));
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(userRole);
         user.setRole(userRoles);
-        userDao.save(user);*/
+        userDao.save(user);
     }
 
     public String getEncodedPassword(String password) {
