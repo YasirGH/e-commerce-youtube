@@ -19,23 +19,24 @@ public class UserController {
     private UserService userService;
 
     @PostConstruct
-    public void initRolesAndUsers(){
+    public void initRolesAndUsers() {
         userService.initRolesAndUser();
     }
+
     @PostMapping({"/registerNewUser"})
-    public User registerNewUser(@RequestBody User user){
+    public User registerNewUser(@RequestBody User user) {
         return userService.registerNewUser(user);
     }
 
     @GetMapping({"/forAdmin"})
     @PreAuthorize("hasRole('Admin')")
-    public String forAdmin(){
+    public String forAdmin() {
         return "This URL is only accessible only for admin";
     }
 
     @GetMapping({"/forUser"})
     @PreAuthorize("hasRole('User')")
-    public String forUser(){
+    public String forUser() {
         return "This URL is only accessible only for User";
     }
 }

@@ -36,16 +36,16 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
             try {
                 userName = jwtUtil.getUserNameFromToken(jwtToken);
-            } catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println("Unable to get JWT token");
-            } catch (ExpiredJwtException e){
+            } catch (ExpiredJwtException e) {
                 System.out.println("JWT token is expired");
             }
         } else {
             System.out.println("JWT token does not start with Bearer");
         }
 
-        if(userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = jwtService.loadUserByUsername(userName);
 
             if (jwtUtil.validateToken(jwtToken, userDetails)) {

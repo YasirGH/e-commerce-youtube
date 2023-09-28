@@ -14,8 +14,9 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "learn_programming_yourself" ;
-    private static final int TOKEN_VALIDITY = 3600 * 5 ;
+    private static final String SECRET_KEY = "learn_programming_yourself";
+    private static final int TOKEN_VALIDITY = 3600 * 5;
+
     public String getUserNameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
@@ -29,9 +30,9 @@ public class JwtUtil {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
-    public boolean validateToken(String token, UserDetails userDetails){
+    public boolean validateToken(String token, UserDetails userDetails) {
         String userName = getUserNameFromToken(token);
-        return ( userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     private boolean isTokenExpired(String token) {
