@@ -51,7 +51,7 @@ public class ProductController {
         return imageModels;
     }
 
-    @GetMapping(value = {"/getAllProducts"})
+    @GetMapping("/getAllProducts")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
