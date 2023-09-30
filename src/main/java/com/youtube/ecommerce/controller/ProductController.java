@@ -52,6 +52,10 @@ public class ProductController {
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
+    @GetMapping("/getProductDetailsById/{productId}")
+    public Product getProductDetailsById(@PathVariable("productId") Integer productId){
+        return productService.getProductDetailsById(productId);
+    }
 
     @DeleteMapping("/deleteProductDetails/{productId}")
     public void deleteProduct(@PathVariable("productId") Integer productId) {
