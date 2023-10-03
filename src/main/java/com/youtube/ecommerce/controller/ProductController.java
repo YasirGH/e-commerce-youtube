@@ -1,6 +1,7 @@
 package com.youtube.ecommerce.controller;
 
 import com.youtube.ecommerce.entity.ImageModel;
+import com.youtube.ecommerce.entity.OrderInput;
 import com.youtube.ecommerce.entity.Product;
 import com.youtube.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,12 @@ public class ProductController {
     @DeleteMapping("/deleteProductDetails/{productId}")
     public void deleteProduct(@PathVariable("productId") Integer productId) {
         productService.deleteProductDetails(productId);
+    }
+
+    @PreAuthorize("hasRole('User')")
+    @GetMapping({"/getProductDetails/{isSingleProductCheckout}/{productId}"})
+    public List<Product> getProductDetails(@PathVariable(value = "isSingleProductCheckout") Boolean isSingleProductCheckout,
+                                           @PathVariable(value = "productId") Integer productId) {
+        return productService.getProductDetails(isSingleProductCheckout, productId);
     }
 }
