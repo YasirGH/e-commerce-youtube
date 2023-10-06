@@ -27,6 +27,14 @@ public class OrderDetailsService {
     @Autowired
     private CartDao cartDao;
 
+    public List<OrderDetail> getOrderDetails() {
+        String currentUser = JwtRequestFilter.CURRENT_USER;
+        User user = userDao.findById(currentUser).get();
+
+        return orderDetailsDao.findByUser(user);
+
+    }
+
     public void placeOrder(OrderInput orderInput, boolean isSingleProductCheckout) {
         List<OrderProductQuantity> productQuantityList = orderInput.getOrderProductQuantityList();
         for (OrderProductQuantity o : productQuantityList) {
