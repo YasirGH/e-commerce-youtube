@@ -66,4 +66,12 @@ public class OrderDetailsService {
             orderDetailsDao.save(orderDetail);
         }
     }
+
+    public void markOrderAsDelivered(Integer orderId) {
+        OrderDetail orderDetail = orderDetailsDao.findById(orderId).get();
+        if (orderDetail != null) {
+            orderDetail.setOrderStatus("Delivered");
+            orderDetailsDao.save(orderDetail);
+        }
+    }
 }
