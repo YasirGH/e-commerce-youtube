@@ -28,9 +28,13 @@ public class OrderDetailsService {
     @Autowired
     private CartDao cartDao;
 
-    public List<OrderDetail> getAllOrderDetails() {
+    public List<OrderDetail> getAllOrderDetails(String status) {
         List<OrderDetail> orderDetails = new ArrayList<>();
-        orderDetailsDao.findAll().forEach(x -> orderDetails.add(x));
+        if (status.equals("All")) {
+            orderDetailsDao.findAll().forEach(x -> orderDetails.add(x));
+        } else {
+            orderDetailsDao.findByOrderStatus(status).forEach(x -> orderDetails.add(x));
+        }
         return orderDetails;
     }
 
